@@ -1,8 +1,9 @@
 Package.describe({
   summary: "Create, read and edit .zip files on the client",
-  version: "2.4.0_1",
+  version: "0.0.1",
+  name: 'silentcicero:jszip',
   git: "https://github.com/silentcicero/meteor-jszip.git",
-  environments: 'client'
+  environments: 'client',
 });
 
 Npm.depends({
