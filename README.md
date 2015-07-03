@@ -20,27 +20,13 @@ Full documentation of the API at the original package [JSZip][2].
 ##Usage
 ```js
 var zip = new JSZip();
+zip.file("Hello.txt", "Hello World\n");
+var img = zip.folder("images");
+img.file("smile.gif", imgData, {base64: true});
+var content = zip.generate({type:"blob"});
 
-// Add content to Zip file
-zip.file('textfile.txt', 'Hello World');
-zip.file('folder/image.jpg', binaryContent);
-zip.file('folder/document.pdf', binaryContentBase64Encoded, {base64: true});
-
-// Save to file on server
-zip.saveAs("/path/to/filename.zip");
-```
-
-Optionally you can pass a callback function
-```js
-zip.saveAs("/path/to/filename.zip", function(error, result) {
-    // ...
-});
-```
-
-If in an unknown environment you want to save to a folder within the meteor structure, e.g. the `public` folder you can use `process.env["PWD"]` to get to the absolute path:
-```js
-var path = process.env["PWD"] + "/public/";
-zip.saveAs(path + "filename.zip");
+// see FileSaver.js
+saveAs(content, "example.zip");
 ```
 
 In an older Meteor version (before 0.6.5?) you could get to the public folder via `Meteor.chroot`.
